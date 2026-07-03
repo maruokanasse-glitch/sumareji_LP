@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スマレジ | クラウドPOSレジ – 補助金で最大2/3の費用を削減</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0e1a2b;
+  --ink-mid: #2d3f55;
+  --ink-light: #5a7080;
+  --blue: #1a56db;
+  --blue-dark: #1648c0;
+  --blue-tint: #e8f0fd;
+  --gold: #a07828;
+  --gold-tint: #fef8ed;
+  --off-white: #f8f6f1;
+  --white: #ffffff;
+  --border: rgba(14,26,43,0.1);
+  --border-mid: rgba(14,26,43,0.18);
+  --serif: 'Shippori Mincho B1', 'Noto Serif JP', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+  --display: 'Cormorant Garamond', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--off-white);
+  line-height: 1.75;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  background-image: radial-gradient(circle, rgba(14,26,43,0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Utilities ── */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 96px 0; }
+.section-white { background: var(--white); background-image: none; }
+.section-ink {
+  background: var(--ink);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.rule { width: 40px; height: 2px; background: var(--blue); margin-bottom: 20px; }
+.rule-gold { background: var(--gold); }
+
+.overline {
+  font-family: var(--sans);
+  font-size: 14px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--blue);
+  margin-bottom: 8px; display: block;
+}
+.overline-gold { color: var(--gold); }
+
+.h-serif {
+  font-family: var(--serif);
+  font-weight: 800; line-height: 1.25;
+  color: var(--ink);
+}
+
+.stamp {
+  display: inline-block;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; padding: 3px 10px;
+  font-family: var(--sans);
+  text-transform: uppercase;
+}
+
+/* ── Nav ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: rgba(248,246,241,0.92);
+  backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.nav.scrolled {
+  background: rgba(248,246,241,0.97);
+  box-shadow: 0 1px 24px rgba(14,26,43,0.06);
+}
+
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 19px; font-weight: 800;
+  color: var(--ink); text-decoration: none;
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo-mark {
+  width: 28px; height: 28px;
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+}
+.nav-logo-mark svg { width: 14px; height: 14px; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 0; list-style: none;
+}
+.nav-links a {
+  font-size: 13px; font-weight: 700; color: var(--ink-mid);
+  text-decoration: none; padding: 8px 14px;
+  letter-spacing: 0.02em;
+  position: relative; transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 4px; left: 14px; right: 14px;
+  height: 1px; background: var(--blue);
+  transform: scaleX(0); transition: transform 0.25s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans); font-weight: 700; cursor: pointer;
+  text-decoration: none; border: none; white-space: nowrap;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--blue); color: var(--white);
+  font-size: 13px; padding: 10px 22px;
+  border-radius: 50px;
+  letter-spacing: 0.04em;
+}
+.btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,86,219,0.28); }
+.btn-outline {
+  background: transparent; color: var(--ink);
+  font-size: 13px; padding: 9px 20px;
+  border: 1px solid var(--border-mid);
+  border-radius: 50px; letter-spacing: 0.04em;
+}
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-lg { font-size: 15px; padding: 14px 32px; letter-spacing: 0.06em; }
+
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px;
+}
+.nav-hamburger span {
+  display: block; width: 20px; height: 1.5px;
+  background: var(--ink); transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 0 80px;
+  position: relative; overflow: hidden;
+}
+
+.hero-bg-num {
+  position: absolute; right: -2%; top: 50%; transform: translateY(-55%);
+  font-family: var(--serif);
+  font-size: clamp(280px, 32vw, 480px);
+  font-weight: 300; line-height: 1;
+  color: rgba(26,86,219,0.055);
+  pointer-events: none; user-select: none;
+  letter-spacing: -0.04em;
+}
+
+.hero-inner {
+  position: relative;
+}
+
+.hero-badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--gold-tint);
+  border: 1px solid rgba(160,120,40,0.3);
+  color: var(--gold); font-size: 12px; font-weight: 700;
+  padding: 5px 14px; letter-spacing: 0.06em;
+}
+
+.hero-title {
+  font-family: var(--sans);
+  font-size: clamp(18px, 4.5vw, 26px);
+  font-weight: 700; line-height: 1.5;
+  color: var(--blue); margin-bottom: 20px;
+  text-align: center;
+}
+.hero-title em { font-style: normal; color: var(--blue); }
+
+.hero-note {
+  display: block;
+  margin-bottom: 24px;
+}
+.hero-badge-imgs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 110%;
+  margin-left: -5%;
+  overflow: hidden;
+}
+.hero-badge-set {
+  flex: 0 0 auto;
+  width: clamp(110px, 34%, 170px);
+  height: auto;
+  object-fit: contain;
+}
+.hero-badge-pos {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: clamp(150px, 52%, 260px);
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+.hero-medal {
+  display: inline-flex; flex-direction: column; align-items: center;
+  gap: 0; user-select: none;
+}
+.hero-medal-circle {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f5d97a, #c8922a 60%, #9a6e18);
+  border: 3px solid #e8c060;
+  box-shadow:
+    0 0 0 2px #b8860b,
+    0 6px 20px rgba(160,120,40,0.45),
+    inset 0 2px 6px rgba(255,255,255,0.35);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; position: relative; overflow: hidden;
+}
+.hero-medal-circle::before {
+  content: '';
+  position: absolute; inset: 5px; border-radius: 50%;
+  border: 1.5px solid rgba(255,220,80,0.5);
+}
+.hero-medal-crown {
+  font-size: 14px; line-height: 1; margin-top: 4px;
+  filter: drop-shadow(0 1px 1px rgba(120,80,0,0.4));
+}
+.hero-medal-text {
+  font-family: var(--sans); font-size: 9px; font-weight: 700;
+  color: #5a3a00; letter-spacing: 0.06em; text-align: center;
+  line-height: 1.3; padding: 0 4px;
+}
+.hero-medal-stars {
+  font-size: 8px; color: #7a5000; letter-spacing: 2px; margin-top: 1px;
+}
+.hero-medal-ribbon {
+  display: flex; gap: 0; position: relative; top: -2px;
+}
+.hero-medal-ribbon-l,
+.hero-medal-ribbon-r {
+  width: 18px; height: 28px;
+  background: linear-gradient(160deg, #c0392b, #8b1a10);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+}
+.hero-medal-ribbon-l { transform: rotate(-6deg) translateX(3px); }
+.hero-medal-ribbon-r { transform: rotate(6deg) translateX(-3px); }
+.hero-medal-ribbon-l::after,
+.hero-medal-ribbon-r::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.15), transparent);
+}
+
+.hero-desc {
+  font-size: 18px; color: var(--ink-mid);
+  line-height: 1.8; margin-bottom: 28px;
+  text-align: center;
+}
+
+.hero-btns { display: flex; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+.hero-btns .btn-primary {
+  width: 100%;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+.hero-btns .btn-outline { display: none; }
+
+.hero-metrics {
+  display: flex; gap: 32px; padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.hero-metric-num {
+  font-family: var(--serif);
+  font-size: 34px; font-weight: 400;
+  color: var(--ink); line-height: 1;
+  letter-spacing: -0.02em;
+}
+.hero-metric-num span { font-size: 16px; margin-left: 2px; font-family: var(--sans); font-weight: 700; }
+.hero-metric-label { font-size: 11px; color: var(--ink-light); margin-top: 4px; letter-spacing: 0.04em; }
+
+/* Hero dashboard — refined */
+.hero-dash {
+  background: var(--white);
+  border: 1px solid var(--border-mid);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 16px 48px rgba(14,26,43,0.1), 0 4px 12px rgba(14,26,43,0.06);
+}
+.dash-topbar {
+  background: var(--ink); padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.dash-topbar-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; text-transform: uppercase; }
+.dash-dot { width: 6px; height: 6px; border-radius: 50%; background: #3dd68c; display: inline-block; margin-right: 6px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+.dash-live { font-size: 10px; color: rgba(255,255,255,0.5); display: flex; align-items: center; }
+
+.dash-body { padding: 16px; }
+
+.dash-kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.dash-kpi {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.dash-kpi::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--blue);
+}
+.dash-kpi-label { font-size: 10px; color: var(--ink-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.dash-kpi-val { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; line-height: 1; }
+.dash-kpi-val.up { color: var(--blue); }
+.dash-kpi-sub { font-size: 10px; color: var(--ink-light); margin-top: 3px; }
+
+.dash-chart-label { font-size: 10px; color: var(--ink-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+.dash-bars { display: flex; align-items: flex-end; gap: 5px; height: 50px; margin-bottom: 14px; }
+.dash-bar { flex: 1; border-radius: 1px 1px 0 0; transition: opacity 0.2s; }
+.dash-bar.dim { background: rgba(26,86,219,0.12); }
+.dash-bar.hi { background: var(--blue); }
+.dash-bar:nth-child(1){height:45%}
+.dash-bar:nth-child(2){height:60%}
+.dash-bar:nth-child(3){height:52%}
+.dash-bar:nth-child(4){height:80%}
+.dash-bar:nth-child(5){height:68%}
+.dash-bar:nth-child(6){height:95%}
+.dash-bar:nth-child(7){height:72%}
+
+.dash-tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.dash-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 3px 8px; border: 1px solid var(--border);
+  color: var(--ink-mid); text-transform: uppercase;
+}
+
+.hero-float-card {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--white); border: 1px solid var(--border-mid);
+  padding: 12px 16px; width: 160px;
+  box-shadow: 0 8px 24px rgba(14,26,43,0.12);
+  animation: floatCard 3s ease-in-out infinite;
+}
+@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.float-card-label { font-size: 9px; color: var(--ink-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.float-card-val { font-family: var(--serif); font-size: 28px; color: var(--blue); font-weight: 400; line-height: 1; }
+.float-card-sub { font-size: 10px; color: var(--ink-light); margin-top: 2px; }
+
+/* ── Subsidy ── */
+.subsidy-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
+
+.subsidy-nums { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border-mid); }
+.subsidy-num-item {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.subsidy-num-item:last-child { border-right: none; }
+.subsidy-num-item:hover { background: rgba(26,86,219,0.02); }
+.sub-icon { width: 64px; height: 64px; flex-shrink: 0; }
+.sub-text { display: flex; flex-direction: column; }
+.sub-overline { font-size: 14px; font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin-bottom: 10px; display: block; }
+.sub-big {
+  font-family: var(--serif);
+  font-size: 52px; font-weight: 300; line-height: 1;
+  color: var(--ink); letter-spacing: -0.03em;
+}
+.sub-big sup { font-size: 18px; font-weight: 400; vertical-align: top; margin-top: 8px; display: inline-block; }
+.sub-big sub { font-size: 16px; font-weight: 400; font-family: var(--sans); }
+.sub-label { font-size: 13px; color: var(--ink-mid); margin-top: 6px; }
+
+.subsidy-flow-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; border: 1px solid var(--border-mid); margin-top: 40px; }
+.sub-flow-item {
+  padding: 28px 24px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.sub-flow-item:last-child { border-right: none; }
+.sub-flow-num {
+  font-family: var(--serif);
+  font-size: 48px; font-weight: 700; color: var(--blue);
+  line-height: 1; margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.sub-flow-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.sub-flow-desc { font-size: 14px; color: var(--ink-light); line-height: 1.7; }
+.sub-flow-arrow {
+  position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+  width: 20px; height: 20px; background: var(--off-white);
+  border: 1px solid var(--border-mid);
+  border-radius: 50%; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.sub-flow-item:last-child .sub-flow-arrow { display: none; }
+.sub-flow-arrow::after { content: '›'; font-size: 14px; color: var(--blue); line-height: 1; }
+
+/* ── Features ── */
+.features-table {
+  border: 1px solid var(--border-mid); margin-top: 48px;
+}
+.feature-row {
+  display: grid; grid-template-columns: 56px 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.feature-row:last-child { border-bottom: none; }
+.feature-row:hover { background: rgba(26,86,219,0.025); }
+.feature-row-num {
+  display: flex; align-items: center; justify-content: center;
+  border-right: 1px solid var(--border);
+  font-family: var(--serif); font-size: 20px; font-weight: 300;
+  color: rgba(26,86,219,0.35); padding: 24px 0;
+}
+.feature-row-main {
+  padding: 24px 28px;
+  border-right: 1px solid var(--border);
+}
+.feature-row-name { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.feature-row-desc { font-size: 13px; color: var(--ink-light); line-height: 1.7; }
+.feature-row-side { padding: 24px 28px; display: flex; align-items: center; }
+.feature-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  padding: 3px 9px; border: 1px solid var(--border-mid);
+  color: var(--ink-light); text-transform: uppercase;
+}
+.feature-tag.active { border-color: rgba(26,86,219,0.35); color: var(--blue); }
+
+.feat-icon { width: 24px; height: 24px; flex-shrink: 0; }
+
+@media (min-width: 961px) {
+  .features-table {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border: none;
+    background: transparent;
+  }
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: unset;
+    border: 1px solid var(--border-mid);
+    border-bottom: 1px solid var(--border-mid);
+    border-radius: 8px;
+    padding: 28px;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(14,26,43,0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .feature-row:last-child { border-bottom: 1px solid var(--border-mid); }
+  .feature-row:hover {
+    background: var(--white);
+    box-shadow: 0 6px 24px rgba(14,26,43,0.12);
+    transform: translateY(-2px);
+  }
+  .feature-row-num {
+    border-right: none;
+    justify-content: flex-start;
+    padding: 0 0 12px 0;
+    font-size: 24px;
+  }
+  .feature-row-main {
+    padding: 0;
+    border-right: none;
+    flex: 1;
+  }
+  .feature-row-side {
+    padding: 12px 0 0 0;
+  }
+}
+
+/* ── Industry ── */
+.industry-header { margin-bottom: 56px; }
+.industry-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border-mid); }
+.industry-card {
+  padding: 36px 32px;
+  border-right: 1px solid var(--border);
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.industry-card:last-child { border-right: none; }
+.industry-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.industry-card.food::before { background: #d97706; }
+.industry-card.retail::before { background: #7c3aed; }
+.industry-card.beauty::before { background: #db2777; }
+.industry-card.food:hover { background: rgba(253,246,235,0.6); }
+.industry-card.retail:hover { background: rgba(245,243,255,0.6); }
+.industry-card.beauty:hover { background: rgba(253,242,248,0.6); }
+
+.ind-type-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 16px; display: block;
+}
+.food .ind-type-label { color: #b45309; }
+.retail .ind-type-label { color: #6d28d9; }
+.beauty .ind-type-label { color: #be185d; }
+
+.ind-title { font-family: var(--serif); font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 12px; line-height: 1.35; }
+.ind-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.8; }
+
+.ind-checklist {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid rgba(14,26,43,0.08);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ind-check-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 12px; color: var(--ink-mid); line-height: 1.5;
+}
+.ind-check-item::before {
+  content: '✓';
+  color: var(--blue); font-weight: 700; font-size: 13px;
+  flex-shrink: 0; line-height: 1.5;
+}
+
+/* ── Flow ── */
+.flow-timeline {
+  position: relative; margin-top: 56px;
+  display: grid; grid-template-columns: repeat(4,1fr);
+}
+.flow-timeline::before {
+  content: ''; position: absolute;
+  top: 23px; left: 120px; right: 120px;
+  height: 1px; background: var(--border-mid);
+}
+
+.flow-step { text-align: center; padding: 0 20px; position: relative; }
+.flow-step-dot {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--border-mid);
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+  font-family: var(--serif); font-size: 18px; font-weight: 400;
+  color: var(--ink-mid);
+  position: relative; z-index: 1;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+.flow-step:hover .flow-step-dot {
+  background: var(--blue); border-color: var(--blue); color: var(--white);
+}
+.flow-step-tag { font-size: 9px; font-weight: 700; color: var(--blue); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+.flow-step-title { font-family: var(--serif); font-size: 16px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+.flow-step-desc { font-size: 12px; color: var(--ink-light); line-height: 1.7; }
+
+/* ── Reviews ── */
+.reviews-wrap { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; margin-top: 48px; }
+.reviews-feat-img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block; min-height: 300px; max-height: 560px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.review-item {
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.review-shop {
+  font-size: 12px; font-weight: 700; color: var(--blue);
+  letter-spacing: 0.08em; padding: 16px 20px 0;
+}
+.review-img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-top: 12px;
+}
+.review-body { padding: 16px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.review-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.review-quote {
+  font-family: var(--serif); font-size: 13px; color: var(--ink-mid);
+  line-height: 1.85; font-weight: 400;
+}
+.review-author { display: flex; align-items: center; gap: 12px; }
+.review-initial {
+  width: 36px; height: 36px; border: 1px solid var(--border-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 15px; font-weight: 800;
+  color: var(--ink); flex-shrink: 0;
+}
+.review-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.review-role { font-size: 11px; color: var(--ink-light); letter-spacing: 0.04em; margin-top: 1px; }
+
+/* ── SUPPORT ── */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.support-card {
+  border: 1px solid var(--border-mid);
+  border-radius: 10px;
+  padding: 28px 24px;
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(14,26,43,0.05);
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.support-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--blue);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.support-card:hover::before { opacity: 1; }
+.support-card:hover {
+  box-shadow: 0 6px 24px rgba(14,26,43,0.1);
+  transform: translateY(-2px);
+}
+.support-icon { width: 48px; height: 48px; margin-bottom: 16px; }
+.support-card-title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.support-card-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.8; }
+
+@media (max-width: 600px) {
+  .support-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ── FLOATING CTA ── */
+.float-cta {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  z-index: 200;
+  width: calc(100% - 32px);
+  max-width: 400px;
+  background: var(--blue);
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 16px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(26,86,219,0.4);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+  opacity: 0;
+}
+.float-cta.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.float-cta:hover { background: #1246b5; }
+@media (min-width: 769px) { .float-cta { display: none !important; } }
+@media (max-width: 768px) { .float-cta { display: block; } }
+
+/* ── FAQ ── */
+.faq-wrap { max-width: 780px; margin: 48px auto 0; border: 1px solid var(--border-mid); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-btn {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 20px 28px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 20px;
+  transition: background 0.2s; font-family: inherit;
+}
+.faq-btn:hover { background: rgba(26,86,219,0.025); }
+.faq-q { font-size: 14px; font-weight: 700; color: var(--ink); }
+.faq-toggle {
+  width: 22px; height: 22px; border: 1px solid var(--border-mid);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.2s, border-color 0.2s;
+  position: relative;
+}
+.faq-toggle::before, .faq-toggle::after {
+  content: ''; position: absolute;
+  background: var(--ink-mid); transition: transform 0.25s, opacity 0.25s;
+}
+.faq-toggle::before { width: 10px; height: 1px; }
+.faq-toggle::after { width: 1px; height: 10px; }
+.faq-item.open .faq-toggle { background: var(--blue); border-color: var(--blue); }
+.faq-item.open .faq-toggle::before, .faq-item.open .faq-toggle::after { background: var(--white); }
+.faq-item.open .faq-toggle::after { transform: rotate(90deg); opacity: 0; }
+.faq-a {
+  font-size: 13px; color: var(--ink-mid); line-height: 1.85;
+  padding: 0 28px 20px 28px; display: none;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ── Contact ── */
+.section-ink { background: #1a3560; }
+.contact-wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.contact-info { padding-top: 8px; }
+.contact-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--blue);
+  margin-bottom: 24px;
+}
+.contact-eyebrow::before {
+  content: ''; width: 24px; height: 1.5px; background: var(--blue);
+}
+.contact-info .h-serif {
+  color: var(--white); font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.25; margin-bottom: 20px;
+}
+.contact-sub {
+  font-size: 14px; color: rgba(255,255,255,0.5);
+  line-height: 1.9; margin-bottom: 36px;
+}
+.contact-points { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.contact-points li {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85);
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.contact-points li:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+.contact-points li::before {
+  content: '';
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue); flex-shrink: 0;
+}
+.contact-form-wrap {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.contact-form-header {
+  background: var(--blue);
+  padding: 20px 28px;
+  display: flex; align-items: center; gap: 10px;
+}
+.contact-form-header-title {
+  font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.04em;
+}
+.contact-form-header-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+}
+.contact-cta-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 44px 40px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+}
+.contact-cta-badge {
+  display: inline-block;
+  background: #eef3ff;
+  color: var(--blue);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  padding: 5px 14px; border-radius: 20px;
+  margin-bottom: 20px;
+}
+.contact-cta-lead {
+  font-size: 15px; color: var(--ink); line-height: 1.8;
+  margin-bottom: 28px;
+}
+.contact-cta-btn {
+  display: block; width: 100%;
+  background: var(--blue); color: #fff;
+  font-size: 16px; font-weight: 700; text-align: center;
+  padding: 18px 24px; border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  letter-spacing: 0.04em;
+}
+.contact-cta-btn:hover {
+  background: #1246b5; transform: translateY(-2px);
+}
+.contact-cta-note {
+  font-size: 11px; color: var(--ink-light);
+  text-align: center; margin-top: 10px; margin-bottom: 0;
+}
+.contact-cta-divider {
+  height: 1px; background: var(--border);
+  margin: 28px 0;
+}
+.contact-cta-assurance {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.contact-cta-assurance-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--ink-mid);
+}
+.contact-cta-assurance-item svg {
+  color: var(--blue); flex-shrink: 0;
+}
+
+.form-box {
+  background: var(--white);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 36px 32px;
+}
+.form-box-title {
+  font-family: var(--serif);
+  font-size: 18px; font-weight: 800; color: var(--ink);
+  margin-bottom: 24px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.f-group { margin-bottom: 14px; }
+.f-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: var(--ink-mid);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.f-req {
+  font-size: 9px; font-weight: 700; background: var(--blue);
+  color: var(--white); padding: 1px 5px; letter-spacing: 0.06em;
+}
+.f-opt { font-size: 9px; color: var(--ink-light); letter-spacing: 0.06em; }
+
+.f-input, .f-select, .f-textarea {
+  width: 100%; font-family: var(--sans); font-size: 14px;
+  color: var(--ink); background: var(--off-white);
+  border: 1px solid var(--border-mid);
+  padding: 10px 12px; outline: none;
+  transition: border-color 0.2s, background 0.2s; border-radius: 0;
+  appearance: none;
+}
+.f-input:focus, .f-select:focus, .f-textarea:focus {
+  border-color: var(--blue); background: var(--white);
+}
+.f-textarea { resize: vertical; min-height: 90px; }
+
+.f-submit { width: 100%; padding: 14px; font-size: 14px; border-radius: 0; letter-spacing: 0.08em; margin-top: 6px; }
+.f-privacy { font-size: 10px; color: var(--ink-light); text-align: center; margin-top: 12px; line-height: 1.6; letter-spacing: 0.03em; }
+
+/* ── Footer ── */
+.footer { padding: 56px 0 32px; }
+.footer-inner {
+  display: grid; grid-template-columns: 200px 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+  padding-bottom: 40px; border-bottom: 1px solid var(--border);
+}
+.footer-brand {}
+.footer-logo { font-family: var(--serif); font-size: 18px; font-weight: 800; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.footer-tagline { font-size: 12px; color: var(--ink-light); line-height: 1.7; }
+
+.footer-col-title { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--blue); }
+
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 13px; color: var(--ink-light); letter-spacing: 0.04em; }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 13px; color: var(--ink-light); text-decoration: none; }
+.footer-legal a:hover { color: var(--ink); }
+
+/* ── Floating CTA ── */
+.float-cta {
+  position: fixed; bottom: 28px; right: 28px; z-index: 300;
+  display: none; animation: fadeUp 0.4s ease;
+}
+.float-cta.visible { display: block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+/* ── Counter animation ── */
+@keyframes countUp { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+.counted { animation: countUp 0.6s ease forwards; }
+
+/* ── Hero text col (2-col grid on desktop) ── */
+.hero-text-col {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 0 60px;
+  align-items: start;
+}
+.hero-text-col h1,
+.hero-text-col .hero-note,
+.hero-text-col .hero-desc,
+.hero-text-col .hero-btns,
+.hero-text-col .hero-metrics {
+  grid-column: 1;
+}
+.hero-text-col .hero-img-wrap {
+  grid-column: 2;
+  grid-row: 1 / 6;
+  align-self: center;
+}
+
+/* ── Hero image ── */
+.hero-img-wrap {
+  position: relative;
+  border: 1px solid var(--border-mid);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(14,26,43,0.13), 0 4px 16px rgba(14,26,43,0.07);
+  overflow: hidden;
+}
+.hero-img-wrap::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(248,246,241,0.35));
+  pointer-events: none;
+}
+.hero-img {
+  display: block; width: 100%; height: auto;
+  object-fit: cover; object-position: center;
+  transition: transform 0.6s ease;
+}
+.hero-img-wrap:hover .hero-img { transform: scale(1.025); }
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .hero-text-col { grid-template-columns: 1fr; }
+  .hero-text-col .hero-img-wrap { grid-column: 1; grid-row: auto; margin-top: 0; }
+  .hero-bg-num { display: none; }
+  .subsidy-header { grid-template-columns: 1fr; gap: 32px; }
+  .industry-grid { grid-template-columns: 1fr; }
+  .industry-card { border-right: none; border-bottom: 1px solid var(--border); }
+  .industry-card:last-child { border-bottom: none; }
+  .flow-timeline { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+  .flow-timeline::before { display: none; }
+  .reviews-wrap { grid-template-columns: 1fr; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 16px; }
+  .review-item { border-right: 1px solid var(--border-mid); }
+  .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+  .contact-info { display: block; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .section { padding: 64px 0; }
+  .hero { padding: 100px 0 60px; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .subsidy-nums { grid-template-columns: 1fr; }
+  .subsidy-num-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .subsidy-num-item:last-child { border-bottom: none; }
+  .subsidy-flow-grid { grid-template-columns: 1fr 1fr; }
+  .feature-row { grid-template-columns: 40px 1fr; }
+  .feature-row-side { display: none; }
+  .flow-timeline { grid-template-columns: 1fr; }
+  .f-row { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* Mobile nav */
+.mobile-nav {
+  display: none; position: fixed; inset: 0; z-index: 190;
+  background: var(--off-white); padding: 80px 32px 40px;
+  flex-direction: column;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--serif); font-size: 22px; font-weight: 800;
+  color: var(--ink); text-decoration: none;
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.mobile-nav .btn-primary { margin-top: 24px; justify-content: center; font-size: 15px; padding: 14px; border-radius: 0; }
+
+/* Section title block */
+.section-head { margin-bottom: 0; }
+.section-head .h-serif { font-size: clamp(26px, 4vw, 40px); }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="photo/hero/site_logo.png" alt="スマレジ" style="height:30px;width:auto;display:block;">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#subsidy">補助金</a></li>
+        <li><a href="#features">機能</a></li>
+        <li><a href="#industry">業種別</a></li>
+        <li><a href="#flow">導入の流れ</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#subsidy" class="m-link">補助金</a>
+  <a href="#features" class="m-link">機能</a>
+  <a href="#industry" class="m-link">業種別</a>
+  <a href="#flow" class="m-link">導入の流れ</a>
+  <a href="#faq" class="m-link">FAQ</a>
+  <a href="#contact" class="btn btn-primary">無料で相談する</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text-col">
+        <div class="hero-img-wrap reveal reveal-d2">
+          <img
+            src="photo/smaregi_paygate_images/smaregi_paygate_03.jpg"
+            alt="スマレジ POSレジ端末 – カフェカウンターに設置されたiPadスタンドとレシートプリンター"
+            class="hero-img"
+          >
+        </div>
+        <h1 class="hero-title reveal reveal-d1">
+          クラウドPOSレジ、<br><em>デジタル化・AI導入補助金で導入</em>
+        </h1>
+        <div class="hero-note reveal reveal-d2">
+          <div class="hero-badge-imgs">
+            <img src="photo/hero/set.png" alt="申請着手金なし" class="hero-badge-set">
+            <img src="photo/hero/POS_Horizontal_rubi.png" alt="スマレジ POS" class="hero-badge-pos">
+          </div>
+        </div>
+        <p class="hero-desc reveal reveal-d2">
+          【クラウドPOSレジの導入をご検討の事業者様】<br>
+          <span style="font-size:20px;font-weight:700;color:var(--ink);display:block;margin-top:8px;text-align:center;">NASSEが支援します！</span>
+        </p>
+        <div class="hero-btns reveal reveal-d3">
+          <a href="#contact" class="btn btn-primary btn-lg">補助金申請を相談 →</a>
+          <a href="#features" class="btn btn-outline btn-lg">機能を見る</a>
+        </div>
+        <div class="hero-metrics reveal reveal-d4">
+          <div>
+            <div class="hero-metric-num">2/3<span>まで</span></div>
+            <div class="hero-metric-label">最大補助率</div>
+          </div>
+          <div>
+            <div class="hero-metric-num">350<span>万円</span></div>
+            <div class="hero-metric-label">補助上限額</div>
+          </div>
+          <div>
+            <div class="hero-metric-num">0<span>円</span></div>
+            <div class="hero-metric-label">申請サポート費用</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUBSIDY ── -->
+<section class="section section-white" id="subsidy">
+  <div class="container">
+    <div class="subsidy-header">
+      <div class="section-head reveal">
+        <div class="rule rule-gold"></div>
+        <span class="overline overline-gold">デジタル化・AI導入補助金 2026</span>
+        <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">補助金を使えば<br>初期費用を最大<br><span style="color:var(--blue)">2/3カット</span></h2>
+      </div>
+      <div class="reveal reveal-d1">
+        <p style="font-size:15px;color:var(--ink-mid);line-height:1.9">
+          スマレジは弊社取り扱いのデジタル化・AI導入補助金の対象ツールです。中小企業・個人事業主の方が対象で、申請から導入まで専任スタッフがサポートします。
+        </p>
+        <div style="margin-top:24px">
+          <a href="#contact" class="btn btn-primary">補助金について相談する →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsidy-nums reveal">
+      <div class="subsidy-num-item">
+        <div class="sub-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="19" stroke="var(--blue)" stroke-width="1.5" stroke-dasharray="4 2" opacity="0.3"/>
+            <text x="20" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="var(--blue)" font-family="sans-serif">%</text>
+            <path d="M10 28 L30 12" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="sub-text">
+          <span class="sub-overline">補助率</span>
+          <div class="sub-big"><sup>最大</sup>2/3</div>
+          <div class="sub-label">対象費用の最大2/3を補助<br><span style="font-size:10px;color:var(--ink-light);">※中小企業・小規模事業者が対象</span></div>
+        </div>
+      </div>
+      <div class="subsidy-num-item">
+        <div class="sub-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="12" width="28" height="18" rx="3" stroke="var(--blue)" stroke-width="1.5"/>
+            <path d="M6 18h28" stroke="var(--blue)" stroke-width="1.5"/>
+            <circle cx="20" cy="25" r="3" fill="var(--gold)" opacity="0.8"/>
+            <path d="M13 22h4M23 22h4" stroke="var(--blue)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="sub-text">
+          <span class="sub-overline">補助上限額</span>
+          <div class="sub-big"><sup>最大</sup>350<sub>万円</sub></div>
+          <div class="sub-label">ソフトウェア・クラウド費用が対象</div>
+        </div>
+      </div>
+      <div class="subsidy-num-item">
+        <div class="sub-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="14" r="5" stroke="var(--blue)" stroke-width="1.5"/>
+            <path d="M10 30c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M26 22l3 3-5 5" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="sub-text">
+          <span class="sub-overline">申請サポート</span>
+          <div class="sub-big">無料</div>
+          <div class="sub-label">書類作成から採択まで伴走</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin:36px 0 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+        <div style="width:24px;height:1px;background:var(--ink-light);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;color:var(--ink-light);text-transform:uppercase;">弊社が対応する申請枠</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="position:relative;padding:28px 28px 24px;background:var(--white);border:1px solid var(--border-mid);border-radius:10px;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);"></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--blue);text-transform:uppercase;margin-bottom:10px;">通常枠</div>
+          <div style="font-size:18px;font-family:var(--serif);font-weight:700;color:var(--ink);margin-bottom:12px;">ITツール導入で<br>業務を効率化</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--blue);margin-bottom:6px;">補助率</div>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <div style="font-size:12px;color:var(--ink-mid);">中小企業：<strong style="color:var(--ink);">1/2</strong></div>
+                <div style="font-size:12px;color:var(--ink-mid);">最低賃金近傍の事業者：<strong style="color:var(--ink);">2/3</strong></div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--border);padding-top:14px;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--blue);margin-bottom:6px;">上限額</div>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <div style="font-size:12px;color:var(--ink-mid);">プロセス数 1〜3つ：<strong style="color:var(--ink);">5万〜150万円</strong></div>
+                <div style="font-size:12px;color:var(--ink-mid);">プロセス数 4つ以上：<strong style="color:var(--ink);">150万〜450万円</strong></div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--border);padding-top:14px;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--blue);margin-bottom:6px;">対象費用</div>
+              <div style="font-size:12px;color:var(--ink-mid);">ソフトウェア・クラウド・導入関連費</div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative;padding:28px 28px 24px;background:#1a3560;border-radius:10px;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);"></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;">インボイス枠</div>
+          <div style="font-size:18px;font-family:var(--serif);font-weight:700;color:#fff;margin-bottom:12px;">インボイス対応と<br>DX化を同時に</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div>
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--gold);margin-bottom:6px;">補助率</div>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">〜50万円以下：<strong style="color:#fff;">3/4</strong>（小規模事業者 <strong style="color:#fff;">4/5</strong>）</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">50万〜350万円：<strong style="color:#fff;">2/3</strong></div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">ハードウェア購入費：<strong style="color:#fff;">1/2</strong></div>
+              </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--gold);margin-bottom:6px;">上限額</div>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">ITツール 1機能：<strong style="color:#fff;">〜50万円</strong></div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">ITツール 2機能以上：<strong style="color:#fff;">〜350万円</strong></div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">PC・タブレット等：<strong style="color:#fff;">〜10万円</strong></div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.75);">レジ・券売機等：<strong style="color:#fff;">〜20万円</strong></div>
+              </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:14px;">
+              <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;color:var(--gold);margin-bottom:6px;">対象費用</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.75);">ソフトウェア・クラウド・ハードウェア</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--ink-light);margin-top:12px;text-align:right;">どちらの枠が適しているか、無料相談でご案内します</p>
+    </div>
+
+    <div class="subsidy-flow-grid reveal" style="transition-delay:0.1s">
+      <div class="sub-flow-item">
+        <div class="sub-flow-num">01</div>
+        <div class="sub-flow-title">無料相談</div>
+        <div class="sub-flow-desc">補助金の活用方法を含めてご説明します</div>
+        <div class="sub-flow-arrow"></div>
+      </div>
+      <div class="sub-flow-item">
+        <div class="sub-flow-num">02</div>
+        <div class="sub-flow-title">書類作成</div>
+        <div class="sub-flow-desc">専任スタッフが申請書類を一緒に作成</div>
+        <div class="sub-flow-arrow"></div>
+      </div>
+      <div class="sub-flow-item">
+        <div class="sub-flow-num">03</div>
+        <div class="sub-flow-title">採択・確定</div>
+        <div class="sub-flow-desc">採択率向上のためのアドバイスも実施</div>
+        <div class="sub-flow-arrow"></div>
+      </div>
+      <div class="sub-flow-item">
+        <div class="sub-flow-num">04</div>
+        <div class="sub-flow-title">導入・稼働</div>
+        <div class="sub-flow-desc">最短2週間でスムーズに運用開始</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="reveal">
+      <div class="rule"></div>
+      <span class="overline">機能紹介</span>
+      <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">スマレジとは</h2>
+      <img src="photo/future/mockup_all.png" alt="スマレジ mockup" style="width:100%;height:auto;display:block;margin-top:40px;border-radius:8px;">
+    </div>
+    <div class="features-table reveal" style="transition-delay:0.1s">
+      <div class="feature-row">
+        <div class="feature-row-num">01</div>
+        <div class="feature-row-main">
+          <div class="feature-row-name">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/>
+            </svg>
+            どの端末からでも使える
+          </div>
+          <div class="feature-row-desc">iPad・Android・PCに対応。専用端末は不要で、お手持ちのデバイスからすぐに始められます。</div>
+        </div>
+        <div class="feature-row-side"><span class="feature-tag active">iOS / Android / Web</span></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-num">02</div>
+        <div class="feature-row-main">
+          <div class="feature-row-name">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            売上分析・レポート機能
+          </div>
+          <div class="feature-row-desc">日次・月次の売上を自動グラフ化。人気メニューや時間帯別の傾向をリアルタイムで把握できます。</div>
+        </div>
+        <div class="feature-row-side"><span class="feature-tag active">リアルタイム</span></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-num">03</div>
+        <div class="feature-row-main">
+          <div class="feature-row-name">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
+            </svg>
+            キャッシュレス対応
+          </div>
+          <div class="feature-row-desc">クレジットカード・QRコード決済等に対応。会計スピードアップと顧客満足度向上に貢献します。</div>
+        </div>
+        <div class="feature-row-side"><span class="feature-tag active">Visa / QR / 交通系IC</span></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-num">04</div>
+        <div class="feature-row-main">
+          <div class="feature-row-name">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            複数店舗の一元管理
+          </div>
+          <div class="feature-row-desc">本部から全店舗のメニューや在庫を一括更新。チェーン展開でも管理コストを削減できます。</div>
+        </div>
+        <div class="feature-row-side"><span class="feature-tag">マルチ店舗</span></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-num">05</div>
+        <div class="feature-row-main">
+          <div class="feature-row-name">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 6s4-2 11-2 11 2 11 2"/><path d="M1 6v12s4 2 11 2 11-2 11-2V6"/><path d="M12 4v16"/>
+            </svg>
+            オフライン対応
+          </div>
+          <div class="feature-row-desc">インターネットが途切れても会計処理を継続できます。通信障害時も安心して営業を続けられます。</div>
+        </div>
+        <div class="feature-row-side"><span class="feature-tag active">オフライン稼働</span></div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-row-num">06</div>
+        <div class="feature-row-main">
+          <div class="feature-row-name">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/>
+            </svg>
+            既存POSからの移行
+          </div>
+          <div class="feature-row-desc">商品マスタや顧客データのインポートに対応しています。データ移行サポートも提供しています。</div>
+        </div>
+        <div class="feature-row-side"><span class="feature-tag">データ移行</span></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://smaregi.jp/feature/" target="_blank" rel="noopener" class="btn btn-primary btn-lg">スマレジとは</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INDUSTRY ── -->
+<section class="section section-white" id="industry">
+  <div class="container">
+    <div class="industry-header reveal">
+      <div class="rule"></div>
+      <span class="overline">業種別のメリット</span>
+      <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">あなたの業種に<br><span style="color:var(--blue)">最適化された</span>機能</h2>
+      <img src="photo/container/smaregi_retail_02.jpg" alt="スマレジ 小売" style="width:100%;height:auto;display:block;margin-top:32px;border-radius:8px;">
+    </div>
+    <div class="industry-grid reveal" style="transition-delay:0.1s">
+      <div class="industry-card food">
+        <span class="ind-type-label">飲食店</span>
+        <div class="ind-title">ピークタイムを<br>効率よく乗り越える</div>
+        <div class="ind-checklist">
+          <div class="ind-check-item">会計のスピードが遅くてお客様を待たせてしまう</div>
+          <div class="ind-check-item">オーダーミスや厨房への伝達ミスが多い</div>
+          <div class="ind-check-item">売上・客数の集計に毎日時間がかかっている</div>
+        </div>
+      </div>
+      <div class="industry-card retail">
+        <span class="ind-type-label">小売・アパレル</span>
+        <div class="ind-title">在庫・発注を<br>スマートに自動化</div>
+        <div class="ind-checklist">
+          <div class="ind-check-item">発注漏れや過剰在庫が繰り返し発生している</div>
+          <div class="ind-check-item">棚卸しに丸一日かかってしまう</div>
+          <div class="ind-check-item">どの商品が売れているか把握できていない</div>
+        </div>
+      </div>
+      <div class="industry-card beauty">
+        <span class="ind-type-label">美容・サロン</span>
+        <div class="ind-title">カルテ管理で<br>リピーター獲得を後押し</div>
+        <div class="ind-checklist">
+          <div class="ind-check-item">お客様ごとの施術履歴を紙で管理していて探せない</div>
+          <div class="ind-check-item">リピーター管理やDMが手作業で追いつかない</div>
+          <div class="ind-check-item">会計・予約・カルテがバラバラなシステムで二度手間</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FLOW ── -->
+<section class="section" id="flow">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="rule" style="margin:0 auto 20px"></div>
+      <span class="overline" style="display:block;text-align:center">導入の流れ</span>
+      <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">最短<span style="color:var(--blue)">2週間</span>で導入完了</h2>
+      <p style="font-size:12px;color:var(--ink-light);margin-top:8px;">※補助金採択後のスケジュールとなります</p>
+    </div>
+    <div class="flow-timeline">
+      <div class="flow-step reveal">
+        <div class="flow-step-dot">1</div>
+        <div class="flow-step-tag">Step 01</div>
+        <div class="flow-step-title">無料相談</div>
+        <div class="flow-step-desc">フォームからご連絡。担当者が補助金の活用方法を含めてご説明します。</div>
+      </div>
+      <div class="flow-step reveal reveal-d1">
+        <div class="flow-step-dot">2</div>
+        <div class="flow-step-tag">Step 02</div>
+        <div class="flow-step-title">プラン提案</div>
+        <div class="flow-step-desc">店舗規模・業種に合ったプランと補助金申請内容を一緒に確認します。</div>
+      </div>
+      <div class="flow-step reveal reveal-d2">
+        <div class="flow-step-dot">3</div>
+        <div class="flow-step-tag">Step 03</div>
+        <div class="flow-step-title">補助金申請</div>
+        <div class="flow-step-desc">書類作成を専任スタッフがサポート。採択まで責任を持って伴走します。</div>
+      </div>
+      <div class="flow-step reveal reveal-d3">
+        <div class="flow-step-dot">4</div>
+        <div class="flow-step-tag">Step 04</div>
+        <div class="flow-step-title">導入・稼働</div>
+        <div class="flow-step-desc">設定・研修まで対応。スムーズな運用開始を徹底サポートします。</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:56px" class="reveal">
+      <a href="#contact" class="btn btn-primary btn-lg">今すぐ無料で相談する →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section class="section section-white">
+  <div class="container">
+    <div class="reveal">
+      <div class="rule rule-gold"></div>
+      <span class="overline overline-gold">お客様の声</span>
+      <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">導入店舗からの<br>リアルな声</h2>
+    </div>
+    <div class="reviews-wrap reveal" style="transition-delay:0.1s">
+<div class="reviews-grid">
+        <div class="review-item">
+          <div class="review-shop">ベーカリー</div>
+          <img class="review-img" src="photo/review/スキダマリンク.jpg" alt="スキダマリンク">
+          <div class="review-body">
+            <div class="review-title">スキダマリンク アンビー合志店 様</div>
+            <p class="review-quote">朝の忙しい時間帯でも会計がスムーズになり、お客様をお待たせする時間が大幅に減りました。売れ筋商品の分析もできるので、製造数の調整がしやすくなりました。</p>
+          </div>
+        </div>
+        <div class="review-item">
+          <div class="review-shop">居酒屋</div>
+          <img class="review-img" src="photo/review/鳥庵.jpeg" alt="鳥庵">
+          <div class="review-body">
+            <div class="review-title">鳥庵 様</div>
+            <p class="review-quote">スマレジの導入により、手入力や計算ミスが減少し、会計業務の正確性が向上しました。その結果、お客様への対応もスムーズになり、店舗運営の効率化につながっています。</p>
+          </div>
+        </div>
+        <div class="review-item">
+          <div class="review-shop">ビューティーサロン</div>
+          <img class="review-img" src="photo/smaregi_paygate_images/smaregi_paygate_05.jpg" alt="ヘアサロン">
+          <div class="review-body">
+            <div class="review-title">アクアファミリー 様</div>
+            <p class="review-quote">クラウド型なので、サロンの外からでも売上・スタッフ別データをリアルタイムで確認できます。スタッフごとの売上やメニュー別の実績が一目でわかるので、シフト管理や接客改善に活かせるようになりました。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUPPORT ── -->
+<section class="section section-white" id="support">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <div class="rule" style="margin:0 auto 20px;"></div>
+      <span class="overline">NASSEのサポート</span>
+      <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">導入から運用まで、<br><span style="color:var(--blue)">弊社が一貫サポート</span></h2>
+    </div>
+    <div class="support-grid reveal" style="transition-delay:0.1s">
+      <div class="support-card">
+        <div class="support-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="var(--blue)" stroke-width="1.5" opacity="0.15"/>
+            <path d="M14 30l4-8 5 6 4-4 7 6" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="34" cy="16" r="3" fill="var(--gold)" opacity="0.8"/>
+            <path d="M14 34h20" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="support-card-title">サポート実績</div>
+        <p class="support-card-desc">多くの飲食店・小売・サロンへの導入実績。補助金採択率の高さが強みです。</p>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="var(--blue)" stroke-width="1.5" opacity="0.15"/>
+            <rect x="14" y="16" width="20" height="14" rx="2" stroke="var(--blue)" stroke-width="2"/>
+            <path d="M19 30v4M29 30v4M16 34h16" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19 21h10M19 25h6" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="support-card-title">導入設定</div>
+        <p class="support-card-desc">機器の設置から初期設定・スタッフ研修まで、専任担当者が現地対応します。</p>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="var(--blue)" stroke-width="1.5" opacity="0.15"/>
+            <path d="M16 28c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="18" r="3" stroke="var(--blue)" stroke-width="2"/>
+            <path d="M30 24l3 2-2 3" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+            <path d="M14 34h20" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="support-card-title">運用後のサポート</div>
+        <p class="support-card-desc">導入後も安心。電話・チャットによる継続サポートで、困ったときにすぐ対応します。</p>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" stroke="var(--blue)" stroke-width="1.5" opacity="0.15"/>
+            <rect x="13" y="14" width="22" height="16" rx="2" stroke="var(--blue)" stroke-width="2"/>
+            <path d="M17 19h14M17 23h10M17 27h7" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+            <circle cx="33" cy="33" r="5" fill="var(--gold)" opacity="0.15" stroke="var(--gold)" stroke-width="1.5"/>
+            <path d="M31 33l1.5 1.5L35 31" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="support-card-title">記事広告</div>
+        <p class="support-card-desc">弊社メディアへの掲載で、導入後の集客・ブランディングもあわせてサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DISCLAIMER ── -->
+<section class="section" style="background:#f0f2f5;padding:40px 0;">
+  <div class="container">
+    <div style="max-width:780px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="var(--ink-light)" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="var(--ink-light)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--ink-light);text-transform:uppercase;">免責事項・ご注意</span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-light);line-height:2;margin:0;">
+        ※ 本サイトはスマレジ株式会社の公式サイトではありません。NASSEはスマレジの正規販売代理店として、導入支援・補助金申請サポートを提供しています。<br>
+        ※ 補助金の採択は審査により決定され、必ずしも採択を保証するものではありません。補助率・上限額は申請枠・審査結果により異なります。<br>
+        ※ 補助金の対象となる費用・要件は制度改定により変更となる場合があります。最新情報は担当者にお問い合わせください。<br>
+        ※ 補助金申請には一定の条件（事業規模・業種・導入目的など）があり、すべての事業者が対象となるわけではありません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section" id="faq">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <div class="rule" style="margin:0 auto 20px"></div>
+      <span class="overline" style="display:block;text-align:center">FAQ</span>
+      <h2 class="h-serif" style="font-size:clamp(26px,4vw,40px)">よくある<span style="color:var(--blue)">ご質問</span></h2>
+    </div>
+    <div class="faq-wrap reveal" style="transition-delay:0.1s">
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">どんな補助金が使えますか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">デジタル化・AI導入補助金が主な対象です。スマレジは弊社取り扱いの補助金対象ツールとして登録済みのため、申請が比較的スムーズです。</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">補助率はどのくらいですか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">最大2/3の補助を受けられます。例えば導入費用が30万円の場合、最大20万円が補助される計算です（審査結果により異なります）。</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">申請は自分でやらないといけませんか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">デジタル化・AI導入補助金ではITベンダーを通じて申請をする必要があります。専任スタッフがサポートしますので、お客様が直接手続きをする必要はありません。</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">初期費用はいくらかかりますか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">プランによって異なります。詳しくはお問い合わせフォームよりご相談ください。補助金適用後の実質負担額もご案内します。</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">専用ハードウェアが必要ですか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">iPad・Androidタブレットで会計作業が可能です。専用端末やレシートプリンタ、キャッシュドロワーは補助対象です。</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">インターネットが使えない時はどうなりますか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">オフラインモードを搭載しており、通信が途切れても会計処理を継続できます。</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn"><span class="faq-q">サポート体制はどうなっていますか？</span><span class="faq-toggle"></span></button>
+        <p class="faq-a">スマレジでは電話・チャット・メールによるサポートを09:00〜22:00（365日）で提供しています。緊急時の対応については別途ご相談ください（プランにより異なります）。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section section-ink" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <div class="contact-eyebrow">お問い合わせ</div>
+        <h2 class="h-serif">まずは<br>無料でご相談<br>ください。</h2>
+      </div>
+      <div class="reveal reveal-d1">
+        <div class="contact-cta-card">
+          <div class="contact-cta-badge">無料相談</div>
+          <p class="contact-cta-lead">フォームに必要事項を入力するだけ。<br>担当者が丁寧にご説明します。</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNlsZKWmHP7rPVEgjrhCL_cr1iDcoXpfHOG0TngZ7rA3CCYg/viewform" target="_blank" rel="noopener" class="contact-cta-btn">
+            お問い合わせ →
+          </a>
+          <p class="contact-cta-note">※ Googleフォームが開きます</p>
+          <div class="contact-cta-divider"></div>
+          <div class="contact-cta-assurance">
+            <div class="contact-cta-assurance-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              個人情報は厳重に管理します
+            </div>
+            <div class="contact-cta-assurance-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              2〜3営業日以内に返信
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer section-white">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <img src="photo/hero/site_logo.png" alt="NASSE" style="height:36px;width:auto;">
+        </a>
+      </div>
+      <div>
+        <div class="footer-col-title">サービス</div>
+        <ul class="footer-links">
+          <li><a href="#features">機能紹介</a></li>
+          <li><a href="#industry">業種別機能</a></li>
+          <li><a href="#subsidy">補助金活用</a></li>
+          <li><a href="#flow">導入の流れ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">サポート</div>
+        <ul class="footer-links">
+          <li><a href="#faq">よくある質問</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">連絡先</div>
+        <ul class="footer-links">
+          <li><a href="#contact">無料相談フォーム</a></li>
+          <li><a href="tel:0963357140">096-335-7140</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">会社情報</div>
+        <ul class="footer-links">
+          <li style="line-height:1.7;font-size:14px;color:var(--ink-mid);white-space:nowrap;"><a href="https://www.nasse-corp.com/" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">株式会社NASSE</a><br>〒860-0031 熊本県熊本市中央区魚屋町2-5<br>サンコミビル3F</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 NASSE. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating CTA -->
+<a href="#contact" class="float-cta" id="floatCta">お問い合わせ →</a>
+
+<script>
+// Nav
+const nav = document.getElementById('nav');
+const floatCta = document.getElementById('floatCta');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+  floatCta.classList.toggle('visible', window.scrollY > 500);
+}, { passive: true });
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+document.querySelectorAll('.m-link, .mobile-nav .btn-primary').forEach(el => {
+  el.addEventListener('click', () => document.getElementById('mobileNav').classList.remove('open'));
+});
+
+// Floating CTA
+(function() {
+  const btn = document.getElementById('floatCta');
+  const hero = document.querySelector('.hero');
+  const contact = document.getElementById('contact');
+  if (!btn || !hero) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.target === hero && !e.isIntersecting) btn.classList.add('visible');
+      if (e.target === hero && e.isIntersecting) btn.classList.remove('visible');
+      if (e.target === contact && e.isIntersecting) btn.classList.remove('visible');
+      if (e.target === contact && !e.isIntersecting && window.scrollY > 300) btn.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  io.observe(hero);
+  if (contact) io.observe(contact);
+})();
+
+// FAQ
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+});
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Form
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formDone').style.display = 'block';
+}
+</script>
+</body>
+</html>
