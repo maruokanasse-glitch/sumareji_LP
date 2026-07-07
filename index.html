@@ -9,6 +9,23 @@
   gtag('js', new Date());
   gtag('config', 'AW-18285431383');
 </script>
+<!-- Event snippet for コンバージョン計測 -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof url != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18285431383/FhEzCI7ru8scENeUlo9E',
+    'value': 1.0,
+    'currency': 'JPY',
+    'event_callback': callback
+  });
+  return false;
+}
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>スマレジ | クラウドPOSレジ – 補助金で最大2/3の費用を削減</title>
@@ -1587,7 +1604,7 @@ body {
         <div class="contact-cta-card">
           <div class="contact-cta-badge">無料相談</div>
           <p class="contact-cta-lead">フォームに必要事項を入力するだけ。<br>担当者が丁寧にご説明します。</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNlsZKWmHP7rPVEgjrhCL_cr1iDcoXpfHOG0TngZ7rA3CCYg/viewform" target="_blank" rel="noopener" class="contact-cta-btn">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNlsZKWmHP7rPVEgjrhCL_cr1iDcoXpfHOG0TngZ7rA3CCYg/viewform" target="_blank" rel="noopener" class="contact-cta-btn" onclick="gtag_report_conversion(this.href); return false;">
             お問い合わせ →
           </a>
           <p class="contact-cta-note">※ Googleフォームが開きます</p>
@@ -1658,7 +1675,7 @@ body {
 </footer>
 
 <!-- Floating CTA -->
-<a href="#contact" class="float-cta" id="floatCta">お問い合わせ →</a>
+<a href="#contact" class="float-cta" id="floatCta" onclick="gtag_report_conversion();">お問い合わせ →</a>
 
 <script>
 // Nav
