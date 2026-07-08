@@ -213,11 +213,12 @@ body {
 }
 
 .hero-title {
-  font-family: var(--sans);
-  font-size: clamp(18px, 4.5vw, 26px);
-  font-weight: 700; line-height: 1.5;
-  color: var(--blue); margin-bottom: 20px;
+  font-family: var(--serif);
+  font-size: clamp(22px, 4.5vw, 32px);
+  font-weight: 800; line-height: 1.55;
+  color: var(--ink); margin-bottom: 20px;
   text-align: center;
+  letter-spacing: 0.02em;
 }
 .hero-title em { font-style: normal; color: var(--blue); }
 
@@ -534,20 +535,18 @@ body {
   content: ''; position: absolute; top: 0; left: 0; right: 0;
   height: 3px;
 }
-.industry-card.food::before { background: #d97706; }
-.industry-card.retail::before { background: #7c3aed; }
-.industry-card.beauty::before { background: #db2777; }
-.industry-card.food:hover { background: rgba(253,246,235,0.6); }
-.industry-card.retail:hover { background: rgba(245,243,255,0.6); }
-.industry-card.beauty:hover { background: rgba(253,242,248,0.6); }
+.industry-card.food::before { background: var(--gold); }
+.industry-card.retail::before { background: var(--blue); }
+.industry-card.beauty::before { background: var(--ink); }
+.industry-card:hover { background: rgba(248,246,241,0.7); }
 
 .ind-type-label {
   font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
   text-transform: uppercase; margin-bottom: 16px; display: block;
 }
-.food .ind-type-label { color: #b45309; }
-.retail .ind-type-label { color: #6d28d9; }
-.beauty .ind-type-label { color: #be185d; }
+.food .ind-type-label { color: var(--gold); }
+.retail .ind-type-label { color: var(--blue); }
+.beauty .ind-type-label { color: var(--ink-mid); }
 
 .ind-title { font-family: var(--serif); font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 12px; line-height: 1.35; }
 .ind-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.8; }
@@ -638,7 +637,7 @@ body {
 }
 .support-card {
   border: 1px solid var(--border-mid);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 28px 24px;
   background: var(--white);
   box-shadow: 0 2px 12px rgba(14,26,43,0.05);
@@ -787,9 +786,9 @@ body {
 }
 .contact-cta-card {
   background: #fff;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 44px 40px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
 }
 .contact-cta-badge {
   display: inline-block;
@@ -908,8 +907,8 @@ body {
 
 /* ── Scroll reveal ── */
 .reveal {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
 .reveal-d1 { transition-delay: 0.08s; }
@@ -959,9 +958,7 @@ body {
 .hero-img {
   display: block; width: 100%; height: auto;
   object-fit: cover; object-position: center;
-  transition: transform 0.6s ease;
 }
-.hero-img-wrap:hover .hero-img { transform: scale(1.025); }
 
 /* ── Responsive ── */
 @media (max-width: 960px) {
@@ -1072,8 +1069,8 @@ body {
           </div>
         </div>
         <p class="hero-desc reveal reveal-d2">
-          【クラウドPOSレジの導入をご検討の事業者様】<br>
-          <span style="font-size:20px;font-weight:700;color:var(--ink);display:block;margin-top:8px;text-align:center;">NASSEが支援します！</span>
+          クラウドPOSレジの導入をご検討の事業者様へ<br>
+          <span style="font-family:var(--serif);font-size:22px;font-weight:800;color:var(--ink);display:block;margin-top:10px;text-align:center;letter-spacing:0.04em;">補助金申請から導入まで、NASSEが支援します</span>
         </p>
         <div class="hero-btns reveal reveal-d3">
           <a href="#contact" class="btn btn-primary btn-lg">補助金申請を相談 →</a>
