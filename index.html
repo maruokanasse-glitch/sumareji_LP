@@ -174,6 +174,18 @@ body {
 .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
 .btn-lg { font-size: 15px; padding: 14px 32px; letter-spacing: 0.06em; }
 
+.nav-tel {
+  display: flex; flex-direction: column; align-items: flex-end;
+  text-decoration: none; line-height: 1.3; margin-left: 16px;
+}
+.nav-tel-num {
+  font-family: var(--serif); font-size: 17px; font-weight: 800;
+  color: var(--ink); letter-spacing: 0.02em;
+}
+.nav-tel-num::before { content: '☎ '; font-size: 13px; color: var(--blue); }
+.nav-tel-hours { font-size: 10px; color: var(--ink-light); letter-spacing: 0.04em; }
+@media (max-width: 640px) { .nav-tel { display: none; } }
+
 .nav-hamburger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 6px;
@@ -397,6 +409,29 @@ body {
 
 /* ── Subsidy ── */
 .subsidy-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
+
+.subsidy-deadline {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 20px; padding: 16px 18px;
+  border: 1px solid rgba(160,120,40,0.35); background: var(--gold-tint);
+}
+.subsidy-deadline-label { align-self: flex-start; }
+.subsidy-deadline-list { list-style: none; display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; }
+.subsidy-deadline-list li {
+  font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--ink);
+  display: flex; align-items: baseline; gap: 10px;
+}
+.subsidy-deadline-list li span {
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  color: var(--gold); letter-spacing: 0.06em; flex-shrink: 0;
+}
+.subsidy-deadline-label {
+  font-size: 11px; font-weight: 700; color: var(--gold);
+  letter-spacing: 0.1em; border: 1px solid var(--gold);
+  padding: 2px 8px;
+}
+.subsidy-deadline-date { font-family: var(--serif); font-size: 18px; font-weight: 800; color: var(--ink); }
+.subsidy-deadline-note { font-size: 11px; color: var(--ink-light); }
 
 .subsidy-nums { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border-mid); }
 .subsidy-num-item {
@@ -833,6 +868,51 @@ body {
   color: var(--blue); flex-shrink: 0;
 }
 
+.contact-steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 32px; }
+.contact-step {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.contact-step:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+.contact-step-num {
+  font-family: var(--serif); font-size: 15px; font-weight: 800;
+  width: 28px; height: 28px; flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 50%;
+  color: #fff; display: flex; align-items: center; justify-content: center;
+}
+.contact-step-title { font-size: 14px; font-weight: 700; color: #fff; }
+.contact-step-desc { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+.contact-tel {
+  display: block; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+  padding: 18px 22px; transition: border-color 0.2s, background 0.2s;
+}
+.contact-tel:hover { border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.04); }
+.contact-tel-label { display: block; font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; margin-bottom: 4px; }
+.contact-tel-num {
+  display: block; font-family: var(--serif); font-size: 26px; font-weight: 800;
+  color: #fff; letter-spacing: 0.03em; line-height: 1.2;
+}
+.contact-tel-num::before { content: '☎ '; font-size: 18px; color: #7fa8f0; }
+.contact-tel-hours { display: block; font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+.contact-form-embed-head {
+  background: var(--blue); padding: 16px 24px;
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.contact-form-embed-title { font-size: 15px; font-weight: 700; color: #fff; letter-spacing: 0.04em; }
+.contact-form-embed-sub { font-size: 11px; color: rgba(255,255,255,0.75); }
+.contact-form-iframe {
+  display: block; width: 100%; height: 640px; border: none; background: #fff;
+}
+.contact-form-embed-foot {
+  padding: 12px 24px 16px; text-align: center; background: #fff;
+  border-top: 1px solid var(--border);
+}
+.contact-form-embed-foot a { font-size: 12px; color: var(--blue); text-decoration: none; }
+.contact-form-embed-foot a:hover { text-decoration: underline; }
+
 .form-box {
   background: var(--white);
   border: 1px solid rgba(255,255,255,0.1);
@@ -962,8 +1042,14 @@ body {
 
 /* ── Responsive ── */
 @media (max-width: 960px) {
-  .hero-text-col { grid-template-columns: 1fr; }
-  .hero-text-col .hero-img-wrap { grid-column: 1; grid-row: auto; margin-top: 0; }
+  .hero-text-col { display: flex; flex-direction: column; }
+  .hero-text-col .hero-img-wrap { order: 1; margin-top: 0; }
+  .hero-text-col .hero-title { order: 2; }
+  .hero-text-col .hero-desc { order: 3; }
+  .hero-text-col .hero-btns { order: 4; margin-bottom: 28px; }
+  .hero-text-col .hero-note { order: 5; }
+  .hero-text-col .hero-metrics { order: 6; }
+  .hero-img { max-height: 34vh; }
   .hero-bg-num { display: none; }
   .subsidy-header { grid-template-columns: 1fr; gap: 32px; }
   .industry-grid { grid-template-columns: 1fr; }
@@ -1031,6 +1117,10 @@ body {
         <li><a href="#flow">導入の流れ</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
+      <a href="tel:0963357140" class="nav-tel">
+        <span class="nav-tel-num">096-335-7140</span>
+        <span class="nav-tel-hours">平日 9:30〜17:30</span>
+      </a>
       <button class="nav-hamburger" id="hamburger" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
@@ -1072,9 +1162,9 @@ body {
           クラウドPOSレジの導入をご検討の事業者様へ<br>
           <span style="font-family:var(--serif);font-size:22px;font-weight:800;color:var(--ink);display:block;margin-top:10px;text-align:center;letter-spacing:0.04em;">補助金申請から導入まで、NASSEが支援します</span>
         </p>
-        <div class="hero-btns reveal reveal-d3">
-          <a href="#contact" class="btn btn-primary btn-lg">補助金申請を相談 →</a>
-          <a href="#features" class="btn btn-outline btn-lg">機能を見る</a>
+        <div class="hero-btns reveal reveal-d3" style="flex-direction:column;">
+          <a href="#contact" class="btn btn-primary btn-lg">無料で相談する →</a>
+          <p style="font-size:12px;color:var(--ink-light);text-align:center;width:100%;margin-top:10px;">申請サポート無料／採択されなくても費用はかかりません</p>
         </div>
         <div class="hero-metrics reveal reveal-d4">
           <div>
@@ -1109,7 +1199,17 @@ body {
           スマレジは弊社取り扱いのデジタル化・AI導入補助金の対象ツールです。中小企業・個人事業主の方が対象で、申請から導入まで専任スタッフがサポートします。
         </p>
         <div style="margin-top:24px">
-          <a href="#contact" class="btn btn-primary">補助金について相談する →</a>
+          <a href="#contact" class="btn btn-primary">無料で相談する →</a>
+        </div>
+        <div class="subsidy-deadline">
+          <span class="subsidy-deadline-label">申請締切</span>
+          <ul class="subsidy-deadline-list">
+            <li><span>3次締切</span>2026年7月21日（火）</li>
+            <li><span>4次締切</span>2026年8月25日（火）</li>
+            <li><span>5次締切</span>2026年9月29日（火）</li>
+            <li><span>6次締切</span>2026年10月30日（金）</li>
+          </ul>
+          <span class="subsidy-deadline-note">締切時間はいずれも当日17:00です。締切間近のご相談もお受けしています。</span>
         </div>
       </div>
     </div>
@@ -1596,25 +1696,51 @@ body {
       <div class="contact-info reveal">
         <div class="contact-eyebrow">お問い合わせ</div>
         <h2 class="h-serif">まずは<br>無料でご相談<br>ください。</h2>
+        <p class="contact-sub">申請サポート無料。採択されなくても<br>費用は一切かかりません。</p>
+        <div class="contact-steps">
+          <div class="contact-step">
+            <span class="contact-step-num">1</span>
+            <div>
+              <div class="contact-step-title">フォーム送信</div>
+              <div class="contact-step-desc">入力は1〜2分で完了します</div>
+            </div>
+          </div>
+          <div class="contact-step">
+            <span class="contact-step-num">2</span>
+            <div>
+              <div class="contact-step-title">担当者からご連絡</div>
+              <div class="contact-step-desc">2〜3営業日以内にご返信します</div>
+            </div>
+          </div>
+          <div class="contact-step">
+            <span class="contact-step-num">3</span>
+            <div>
+              <div class="contact-step-title">ヒアリング・お見積り</div>
+              <div class="contact-step-desc">補助金の対象可否もその場でご案内</div>
+            </div>
+          </div>
+        </div>
+        <a href="tel:0963357140" class="contact-tel">
+          <span class="contact-tel-label">お電話でのご相談はこちら</span>
+          <span class="contact-tel-num">096-335-7140</span>
+          <span class="contact-tel-hours">受付時間：平日 9:30〜17:30</span>
+        </a>
       </div>
       <div class="reveal reveal-d1">
-        <div class="contact-cta-card">
-          <div class="contact-cta-badge">無料相談</div>
-          <p class="contact-cta-lead">フォームに必要事項を入力するだけ。<br>担当者が丁寧にご説明します。</p>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNlsZKWmHP7rPVEgjrhCL_cr1iDcoXpfHOG0TngZ7rA3CCYg/viewform" target="_blank" rel="noopener" class="contact-cta-btn" onclick="gtag_report_conversion(this.href); return false;">
-            お問い合わせ →
-          </a>
-          <p class="contact-cta-note">※ Googleフォームが開きます</p>
-          <div class="contact-cta-divider"></div>
-          <div class="contact-cta-assurance">
-            <div class="contact-cta-assurance-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              個人情報は厳重に管理します
-            </div>
-            <div class="contact-cta-assurance-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              2〜3営業日以内に返信
-            </div>
+        <div class="contact-cta-card" style="padding:0;overflow:hidden;">
+          <div class="contact-form-embed-head">
+            <span class="contact-form-embed-title">無料相談フォーム</span>
+            <span class="contact-form-embed-sub">送信後、担当者よりご連絡します</span>
+          </div>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeNlsZKWmHP7rPVEgjrhCL_cr1iDcoXpfHOG0TngZ7rA3CCYg/viewform?embedded=true"
+            class="contact-form-iframe"
+            title="無料相談フォーム"
+            loading="lazy"
+            onload="if(this.dataset.loaded){gtag_report_conversion();}this.dataset.loaded='1';"
+          >読み込んでいます…</iframe>
+          <div class="contact-form-embed-foot">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNlsZKWmHP7rPVEgjrhCL_cr1iDcoXpfHOG0TngZ7rA3CCYg/viewform" target="_blank" rel="noopener">フォームが表示されない場合はこちら →</a>
           </div>
         </div>
       </div>
@@ -1672,7 +1798,7 @@ body {
 </footer>
 
 <!-- Floating CTA -->
-<a href="#contact" class="float-cta" id="floatCta" onclick="gtag_report_conversion();">お問い合わせ →</a>
+<a href="#contact" class="float-cta" id="floatCta" onclick="gtag_report_conversion();">無料で相談する →</a>
 
 <script>
 // Nav
