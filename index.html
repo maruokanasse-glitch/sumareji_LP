@@ -442,23 +442,23 @@ body {
 .subsidy-deadline-date { font-family: var(--serif); font-size: 18px; font-weight: 800; color: var(--ink); }
 .subsidy-deadline-note { font-size: 11px; color: var(--ink-light); }
 
-.subsidy-nums { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 1px solid var(--border-mid); }
+.subsidy-nums { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; border: 1px solid var(--border-mid); background: var(--white); }
 .subsidy-num-item {
-  padding: 28px 24px;
+  padding: 40px 36px;
   border-right: 1px solid var(--border);
   transition: background 0.2s;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 .subsidy-num-item:last-child { border-right: none; }
 .subsidy-num-item:hover { background: rgba(26,86,219,0.02); }
-.sub-icon { width: 64px; height: 64px; flex-shrink: 0; }
+.sub-icon { width: 72px; height: 72px; flex-shrink: 0; }
 .sub-text { display: flex; flex-direction: column; }
 .sub-overline { font-size: 14px; font-weight: 700; color: var(--ink-mid); letter-spacing: 0.08em; margin-bottom: 10px; display: block; }
 .sub-big {
   font-family: var(--serif);
-  font-size: 52px; font-weight: 300; line-height: 1;
+  font-size: 60px; font-weight: 300; line-height: 1;
   color: var(--ink); letter-spacing: -0.03em;
 }
 .sub-big sup { font-size: 18px; font-weight: 400; vertical-align: top; margin-top: 8px; display: inline-block; }
@@ -1183,10 +1183,6 @@ body {
             <div class="hero-metric-label">最大補助率</div>
           </div>
           <div>
-            <div class="hero-metric-num">350<span>万円</span></div>
-            <div class="hero-metric-label">補助上限額</div>
-          </div>
-          <div>
             <div class="hero-metric-num">0<span>円</span></div>
             <div class="hero-metric-label">申請サポート費用</div>
           </div>
@@ -1238,21 +1234,6 @@ body {
           <span class="sub-overline">補助率</span>
           <div class="sub-big"><sup>最大</sup>2/3</div>
           <div class="sub-label">対象費用の最大2/3を補助<br><span style="font-size:10px;color:var(--ink-light);">※中小企業・小規模事業者が対象</span></div>
-        </div>
-      </div>
-      <div class="subsidy-num-item">
-        <div class="sub-icon">
-          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="12" width="28" height="18" rx="3" stroke="var(--blue)" stroke-width="1.5"/>
-            <path d="M6 18h28" stroke="var(--blue)" stroke-width="1.5"/>
-            <circle cx="20" cy="25" r="3" fill="var(--gold)" opacity="0.8"/>
-            <path d="M13 22h4M23 22h4" stroke="var(--blue)" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="sub-text">
-          <span class="sub-overline">補助上限額</span>
-          <div class="sub-big"><sup>最大</sup>350<sub>万円</sub></div>
-          <div class="sub-label">ソフトウェア・クラウド費用が対象</div>
         </div>
       </div>
       <div class="subsidy-num-item">
